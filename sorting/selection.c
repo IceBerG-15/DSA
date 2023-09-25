@@ -20,25 +20,27 @@ int main()
 void selection_sort(int a[],int n)
 {
     int temp;
-    int s;
-    int min;
+    int s;//swap check variable.
+    int min;//this variable will store the index of minimum array element.
     for(int i=0;i<n-1;i++)
     {   
         s=0;
-        min=i;
+        min=i;//initially we assign i value to min.
         for(int j=i+1;j<n;j++)
         {
-            if(a[j]<a[min])
+            if(a[j]<a[min])//checking if other element is min or not.
             {
-                min=j;
-                s=1;
+                min=j;//giving minimum element index to min.
+                s=1;//changing value of s if min changes.
             }
         }
-        if(s==0)
+        if(s==0)//if min doesnt change it means array element are in sorted order.
             break;
+        //swapping the element at min index with first element of unsorted array.
         temp=a[i];
         a[i]=a[min];
         a[min]=temp;
+        //printing array after every pass.
         printf("\nelement after %d pass.",i+1);
         for(int k=0;k<n;k++)
             printf("%d ",a[k]);
