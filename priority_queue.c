@@ -5,7 +5,7 @@ struct node
 {
     int data;
     struct node *next;
-}*front=NULL,*rear=NULL,*ptr;
+}*front=NULL,*rear=NULL,*ptr,*ptr2;
 
 void enqueue();
 void dequeue();
@@ -45,25 +45,27 @@ int main()
 
 void sort()
 {
-    int i,j;
     int temp;
-    if(front!=rear)
+    ptr=front;
+    int s=0;
+    while(ptr!=rear)
     {
-        ptr=front;
-        while(ptr!=rear)
+        ptr2=front;
+        while(ptr2!=rear)
         {
-            i=ptr->data;
-            j=ptr->next->data;
-            if(i<j)
+            s=0;
+            if(ptr2->next->data < ptr2->data)
             {
-                temp=ptr->data;
-                ptr->data=ptr->next->data;
-                ptr->next->data=temp;
-            }  
-            else
-                ptr=ptr->next;
+                temp=ptr2->data;
+                ptr2->data=ptr2->next->data;
+                ptr2->next->data=temp;
+                s=1;
+            }
+            ptr2=ptr2->next;
         }
-    }  
+        ptr=ptr->next;
+    }
+
 }
 
 void enqueue()
